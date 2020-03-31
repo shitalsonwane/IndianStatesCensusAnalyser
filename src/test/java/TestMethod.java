@@ -1,10 +1,14 @@
 import com.bridgelabz.exception.StatesCensusAnalyserException;
+import com.bridgelabz.services.CSVStates;
 import com.bridgelabz.services.StatesCensusAnalyser;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.IOException;
+
 public class TestMethod {
     public static  String CSV_FILE_PATH ="src/test/resources/StateCensusData.csv" ;
+    public static String FILE_PATH = "src/test/resources/StateCode.csv";
 
     @Test
         public void givenStateCensusAnalyserFile_WhenTrue_ReturnNumberOfRecordShouldMatch() throws StatesCensusAnalyserException {
@@ -52,5 +56,12 @@ public class TestMethod {
         } catch (StatesCensusAnalyserException e) {
             Assert.assertEquals(StatesCensusAnalyserException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT,e.exceptionType);
         }
+    }
+    @Test
+    public void givenStateCode_WhenTrue_NumberOfRecordShouldMatch() throws IOException {
+        FILE_PATH = "src/test/resources/StateCode.csv";
+        CSVStates csvStates = new CSVStates(FILE_PATH);
+        int count = csvStates.LoadCSVData();
+        Assert.assertEquals(37, count);
     }
 }
