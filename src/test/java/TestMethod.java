@@ -83,4 +83,25 @@ public class TestMethod {
             Assert.assertEquals(StatesCensusAnalyserException.ExceptionType.FILE_NOT_FOUND, e.exceptionType);
         }
     }
+    @Test // handle delimiter exception
+    public void givenStateCode_WhenImproperDelimiter_ReturnException(){
+        FILE_PATH = "src/test/resources/StateCode1.csv";
+        CSVStates csvStates = new CSVStates(FILE_PATH);
+        try {
+            csvStates.LoadCSVData();
+        } catch (StatesCensusAnalyserException e) {
+            Assert.assertEquals(StatesCensusAnalyserException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT, e.exceptionType);
+        }
+    }
+
+    @Test   //handle incorrect Header Exception
+    public void givenStateCode_WhenImproperHeader_ReturnException(){
+        FILE_PATH = "src/test/resources/StateCode2.csv";
+        CSVStates csvStates = new CSVStates(FILE_PATH);
+        try {
+            csvStates.LoadCSVData();
+        } catch (StatesCensusAnalyserException e) {
+            Assert.assertEquals(StatesCensusAnalyserException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT, e.exceptionType);
+        }
+    }
 }
