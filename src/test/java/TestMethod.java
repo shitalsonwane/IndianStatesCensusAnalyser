@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.io.IOException;
 
 public class TestMethod {
-    private static final String CSV_FILE_PATH ="src/test/resources/StateCensusData.txt" ;
+    private static final String CSV_FILE_PATH ="src/test/resources/StateCensusData.csv" ;
 
     @Test
         public void givenStateCensusAnalyserFile_WhenTrue_ReturnNumberOfRecordShouldMatch() throws IOException,StatesCensusAnalyserException{
