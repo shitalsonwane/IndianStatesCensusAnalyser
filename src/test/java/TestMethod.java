@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.io.IOException;
 
 public class TestMethod {
-    private static final String CSV_FILE_PATH ="src/test/resources/StateCensusData.csv" ;
+    private static final String CSV_FILE_PATH ="src/test/resources/StateCensusData.txt" ;
 
     @Test
         public void givenStateCensusAnalyserFile_WhenTrue_ReturnNumberOfRecordShouldMatch() throws IOException,StatesCensusAnalyserException{
@@ -18,6 +18,15 @@ public class TestMethod {
     public void givenStateCensusAnalyserFile_WhenImproperFileName_ReturnsException() throws IOException{
         try {
             StatesCensusAnalyser censusAnalyser = new StatesCensusAnalyser(CSV_FILE_PATH);
+            censusAnalyser.loadData();
+        } catch (StatesCensusAnalyserException e) {
+            Assert.assertEquals(StatesCensusAnalyserException.ExceptionType.FILE_NOT_FOUND,e.exceptionType);
+        }
+    }
+    @Test
+    public void givenStateCensusAnalyserFile_WhenImproperFileExtension_ReturnsException() throws IOException {
+        StatesCensusAnalyser censusAnalyser = new StatesCensusAnalyser(CSV_FILE_PATH);
+        try {
             censusAnalyser.loadData();
         } catch (StatesCensusAnalyserException e) {
             Assert.assertEquals(StatesCensusAnalyserException.ExceptionType.FILE_NOT_FOUND,e.exceptionType);
