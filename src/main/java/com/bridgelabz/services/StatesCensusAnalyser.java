@@ -5,6 +5,7 @@ import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import java.io.IOException;
 import java.io.Reader;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.Iterator;
 import static java.nio.file.Files.newBufferedReader;
@@ -18,7 +19,7 @@ public class StatesCensusAnalyser {
     public StatesCensusAnalyser(String path) {
         CSV_FILE_PATH = path;
     }
-    public int loadData() throws IOException, StatesCensusAnalyserException{
+    public int loadData() throws StatesCensusAnalyserException{
         try(Reader reader = newBufferedReader(Paths.get(CSV_FILE_PATH)); ){
             CsvToBean<CsvStatesCensus> csvStateCensuses = new CsvToBeanBuilder(reader)
                     .withType(CsvStatesCensus.class)
@@ -35,11 +36,14 @@ public class StatesCensusAnalyser {
                 count++;
             }
         }
-        catch (IOException e) {
+        catch (NoSuchFileException e) {
             throw new StatesCensusAnalyserException(StatesCensusAnalyserException.ExceptionType.FILE_NOT_FOUND);
         }
         catch(RuntimeException e) {
-            throw new StatesCensusAnalyserException(StatesCensusAnalyserException.ExceptionType.DELIMITER_INCORRECT);
+            throw new StatesCensusAnalyserException(StatesCensusAnalyserException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT);
+        }
+        catch (IOException e){
+            e.getStackTrace();
         }
         return count;
     }
