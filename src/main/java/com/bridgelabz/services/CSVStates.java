@@ -38,10 +38,10 @@ public class CSVStates {
             }
         }
         catch (NoSuchFileException e) {
-            throw new StatesCensusAnalyserException(StatesCensusAnalyserException.ExceptionType.FILE_NOT_FOUND);
+            throw new StatesCensusAnalyserException("Enter correct file name and type",StatesCensusAnalyserException.ExceptionType.FILE_NOT_FOUND);
         }
         catch (RuntimeException e){
-            throw new StatesCensusAnalyserException(StatesCensusAnalyserException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT);
+            throw new StatesCensusAnalyserException("Check delimiters and header",StatesCensusAnalyserException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT);
         }
         catch (IOException e) {
             e.printStackTrace();

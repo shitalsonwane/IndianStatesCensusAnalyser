@@ -7,7 +7,8 @@ public class StatesCensusAnalyserException extends Exception{
     }
     public ExceptionType exceptionType;
 
-    public StatesCensusAnalyserException(ExceptionType exceptionType){
+    public StatesCensusAnalyserException(String message,ExceptionType exceptionType){
+        super(message);
         this.exceptionType = exceptionType;
     }
 }
