@@ -38,6 +38,9 @@ public class StatesCensusAnalyser {
         catch (IOException e) {
             throw new StatesCensusAnalyserException(StatesCensusAnalyserException.ExceptionType.FILE_NOT_FOUND);
         }
+        catch(RuntimeException e) {
+            throw new StatesCensusAnalyserException(StatesCensusAnalyserException.ExceptionType.DELIMITER_INCORRECT);
+        }
         return count;
     }
 }
