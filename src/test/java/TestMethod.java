@@ -75,7 +75,7 @@ public class TestMethod {
     @Test   //handle incorrect Header Exception
     public void givenStateCode_WhenImproperHeader_ReturnException() throws Exception{
         try {
-            censusAnalyser.loadIndianStateCodeData("src/test/resources/StateCode2.csv");
+            censusAnalyser.readFile("src/test/resources/StateCode2.csv");
         } catch (CSVBuilderException e) {
             Assert.assertEquals(CSVBuilderException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT, e.exceptionType);
         }

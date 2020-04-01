@@ -6,21 +6,28 @@ import com.opencsv.bean.CsvToBeanBuilder;
 
 import java.io.Reader;
 import java.util.Iterator;
-//csvbuld is seprated from analyser
-public class OpenCSV extends CSV_Interface {
-    public static <E> Iterator<E> CSVfileIterator(Reader reader, Class<E> csvClass) throws CSVBuilderException {
-        return getCSVToBeen(reader,csvClass).iterator();
+import java.util.List;
+
+//csvbuild is seperated from analyser
+public class OpenCSV implements CSV_Interface {
+    public <E> Iterator<E>  CSVfileIterator(Reader reader, Class<E> csvClass) throws CSVBuilderException {
+        return this.getCSVToBeen(reader,csvClass).iterator();
     }
 
-    public static <E> CsvToBean<E> getCSVToBeen(Reader reader, Class<E> csvClass) throws CSVBuilderException {
+    public <E> List<E> getCSVfileList(Reader reader, Class<E> csvClass) throws CSVBuilderException {
+        return this.getCSVToBeen(reader,csvClass).parse();
+    }
+
+    private  <E> CsvToBean<E> getCSVToBeen(Reader reader, Class<E> csvClass) throws CSVBuilderException {
         try {
             CsvToBeanBuilder<E> csvToBeanBuilder = new CsvToBeanBuilder<E>(reader);
-            csvToBeanBuilder.withType(csvClass);
-            csvToBeanBuilder.withIgnoreLeadingWhiteSpace(true);
-            CsvToBean<E> csvToBean = csvToBeanBuilder.build();
+            CsvToBean<E> csvToBean = csvToBeanBuilder.withType(csvClass).withIgnoreLeadingWhiteSpace(true).build();
             return csvToBean;
         } catch (RuntimeException e) {
             throw new CSVBuilderException("Check delimiters and header", CSVBuilderException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT);
+        } catch (Exception e){
+            e.printStackTrace();
         }
+        return (null);
     }
 }
