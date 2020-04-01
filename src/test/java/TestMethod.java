@@ -2,7 +2,6 @@ import com.bridgelabz.exception.StatesCensusAnalyserException;
 import com.bridgelabz.services.StatesCensusAnalyser;
 import org.junit.Assert;
 import org.junit.Test;
-
 public class TestMethod {
     StatesCensusAnalyser censusAnalyser = new StatesCensusAnalyser();
 

@@ -3,7 +3,6 @@ package com.bridgelabz.services;
 import com.bridgelabz.exception.StatesCensusAnalyserException;
 import com.bridgelabz.model.CSVStatesPojoClass;
 import com.bridgelabz.model.CsvStatesCensus;
-
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;

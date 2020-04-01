@@ -6,7 +6,7 @@ import com.opencsv.bean.CsvToBeanBuilder;
 
 import java.io.Reader;
 import java.util.Iterator;
-
+//csvbuld is seprated from analyser
 public class OpenCSV extends CSV_Interface {
     public static <E> Iterator<E> CSVfileIterator(Reader reader, Class<E> csvClass) throws StatesCensusAnalyserException {
         return getCSVToBeen(reader,csvClass).iterator();
