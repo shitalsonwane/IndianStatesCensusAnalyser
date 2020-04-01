@@ -1,6 +1,6 @@
 package com.bridgelabz.services;
 
-import com.bridgelabz.exception.StatesCensusAnalyserException;
+import com.bridgelabz.exception.CSVBuilderException;
 import com.bridgelabz.model.CSVStatesPojoClass;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -18,7 +18,7 @@ public class CSVStates {
         FILE_PATH = Path;
     }
 
-    public int LoadCSVData() throws StatesCensusAnalyserException {
+    public int LoadCSVData() throws CSVBuilderException {
         try (Reader reader = Files.newBufferedReader(Paths.get(FILE_PATH));) {
             CsvToBean<CSVStatesPojoClass> csvStateCensuses = new CsvToBeanBuilder(reader)
                     .withType(CSVStatesPojoClass.class)
@@ -38,10 +38,10 @@ public class CSVStates {
             }
         }
         catch (NoSuchFileException e) {
-            throw new StatesCensusAnalyserException("Enter correct file name and type",StatesCensusAnalyserException.ExceptionType.FILE_NOT_FOUND);
+            throw new CSVBuilderException("Enter correct file name and type",CSVBuilderException.ExceptionType.FILE_NOT_FOUND);
         }
         catch (RuntimeException e){
-            throw new StatesCensusAnalyserException("Check delimiters and header",StatesCensusAnalyserException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT);
+            throw new CSVBuilderException("Check delimiters and header",CSVBuilderException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT);
         }
         catch (IOException e) {
             e.printStackTrace();

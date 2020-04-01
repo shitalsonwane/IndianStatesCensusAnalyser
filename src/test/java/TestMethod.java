@@ -1,4 +1,4 @@
-import com.bridgelabz.exception.StatesCensusAnalyserException;
+import com.bridgelabz.exception.CSVBuilderException;
 import com.bridgelabz.services.StatesCensusAnalyser;
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,32 +14,32 @@ public class TestMethod {
     public void givenStateCensusAnalyserFile_WhenImproperFileName_ReturnsException() throws Exception{
         try {
             censusAnalyser.readFile("src/test/resources/StateCensus.csv");
-        } catch (StatesCensusAnalyserException e) {
-            Assert.assertEquals(StatesCensusAnalyserException.ExceptionType.FILE_NOT_FOUND,e.exceptionType);
+        } catch (CSVBuilderException e) {
+            Assert.assertEquals(CSVBuilderException.ExceptionType.FILE_NOT_FOUND,e.exceptionType);
         }
     }
     @Test   //Check exception if file type wrong
     public void givenStateCensusAnalyserFile_WhenImproperFileExtension_ReturnsException() throws Exception{
         try {
             censusAnalyser.readFile("src/test/resources/StateCensusData.txt");
-        } catch (StatesCensusAnalyserException e) {
-            Assert.assertEquals(StatesCensusAnalyserException.ExceptionType.FILE_NOT_FOUND,e.exceptionType);
+        } catch (CSVBuilderException e) {
+            Assert.assertEquals(CSVBuilderException.ExceptionType.FILE_NOT_FOUND,e.exceptionType);
         }
     }
     @Test   // handle delimiter exception
     public void givenStateCensusAnalyserFile_WhenIncorrectDelimiters_ReturnsException()throws Exception {
         try {
             censusAnalyser.readFile("src/test/resources/StateCensusData1.csv");
-        } catch (StatesCensusAnalyserException e) {
-            Assert.assertEquals(StatesCensusAnalyserException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT,e.exceptionType);
+        } catch (CSVBuilderException e) {
+            Assert.assertEquals(CSVBuilderException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT,e.exceptionType);
         }
     }
     @Test   //handle incorrect Header Exception
     public void givenStateCensusAnalyserFile_WhenIncorrectHeader_ReturnsException() throws Exception {
         try {
             censusAnalyser.readFile("src/test/resources/StateCensusData1.csv");
-        } catch (StatesCensusAnalyserException e) {
-            Assert.assertEquals(StatesCensusAnalyserException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT,e.exceptionType);
+        } catch (CSVBuilderException e) {
+            Assert.assertEquals(CSVBuilderException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT,e.exceptionType);
         }
     }
     //Test For State Code Csv File
@@ -52,32 +52,32 @@ public class TestMethod {
     public void givenStateCode_WhenImproperFileName_ReturnException() throws Exception{
         try {
             censusAnalyser.loadIndianStateCodeData("src/test/resources/Statecode.csv");
-        } catch (StatesCensusAnalyserException e) {
-            Assert.assertEquals(StatesCensusAnalyserException.ExceptionType.FILE_NOT_FOUND, e.exceptionType);
+        } catch (CSVBuilderException e) {
+            Assert.assertEquals(CSVBuilderException.ExceptionType.FILE_NOT_FOUND, e.exceptionType);
         }
     }
     @Test   //Check exception if file type wrong
     public void givenStateCode_WhenImproperFileType_ReturnException() throws Exception{
         try {
             censusAnalyser.loadIndianStateCodeData("src/test/resources/StateCode.txt");
-        } catch (StatesCensusAnalyserException e) {
-            Assert.assertEquals(StatesCensusAnalyserException.ExceptionType.FILE_NOT_FOUND, e.exceptionType);
+        } catch (CSVBuilderException e) {
+            Assert.assertEquals(CSVBuilderException.ExceptionType.FILE_NOT_FOUND, e.exceptionType);
         }
     }
     @Test   // handle delimiter exception
     public void givenStateCode_WhenImproperDelimiter_ReturnException() throws Exception{
         try {
             censusAnalyser.loadIndianStateCodeData("src/test/resources/StateCode1.csv");
-        } catch (StatesCensusAnalyserException e) {
-            Assert.assertEquals(StatesCensusAnalyserException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT, e.exceptionType);
+        } catch (CSVBuilderException e) {
+            Assert.assertEquals(CSVBuilderException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT, e.exceptionType);
         }
     }
     @Test   //handle incorrect Header Exception
     public void givenStateCode_WhenImproperHeader_ReturnException() throws Exception{
         try {
             censusAnalyser.loadIndianStateCodeData("src/test/resources/StateCode2.csv");
-        } catch (StatesCensusAnalyserException e) {
-            Assert.assertEquals(StatesCensusAnalyserException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT, e.exceptionType);
+        } catch (CSVBuilderException e) {
+            Assert.assertEquals(CSVBuilderException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT, e.exceptionType);
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.bridgelabz.services;
 
-import com.bridgelabz.exception.StatesCensusAnalyserException;
+import com.bridgelabz.exception.CSVBuilderException;
 import com.bridgelabz.model.CSVStatesPojoClass;
 import com.bridgelabz.model.CsvStatesCensus;
 import java.io.Reader;
@@ -21,10 +21,10 @@ public class StatesCensusAnalyser {
             return numOfRecords;
         }
         catch (NoSuchFileException e) {
-            throw new StatesCensusAnalyserException("Enter a Right file name and type", StatesCensusAnalyserException.ExceptionType.FILE_NOT_FOUND);
+            throw new CSVBuilderException("Enter a Right file name and type", CSVBuilderException.ExceptionType.FILE_NOT_FOUND);
         }
         catch (RuntimeException e) {
-            throw new StatesCensusAnalyserException("Check delimiters and header", StatesCensusAnalyserException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT);
+            throw new CSVBuilderException("Check delimiters and header", CSVBuilderException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT);
         }
     }
     public Integer loadIndianStateCodeData (String csvFilePath) throws Exception {
@@ -35,10 +35,10 @@ public class StatesCensusAnalyser {
             return countRecord;
         }
         catch (NoSuchFileException e) {
-            throw new StatesCensusAnalyserException("Enter a Right file name and type", StatesCensusAnalyserException.ExceptionType.FILE_NOT_FOUND);
+            throw new CSVBuilderException("Enter a Right file name and type", CSVBuilderException.ExceptionType.FILE_NOT_FOUND);
         }
         catch (RuntimeException e) {
-            throw new StatesCensusAnalyserException("Check delimiters and header", StatesCensusAnalyserException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT);
+            throw new CSVBuilderException("Check delimiters and header", CSVBuilderException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT);
         }
     }
 
