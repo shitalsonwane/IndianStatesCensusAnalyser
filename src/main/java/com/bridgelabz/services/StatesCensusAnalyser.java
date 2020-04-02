@@ -4,7 +4,6 @@ import com.bridgelabz.exception.CSVBuilderException;
 import com.bridgelabz.model.CSVStatesPojoClass;
 import com.bridgelabz.model.CsvStatesCensus;
 
-import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -19,11 +18,14 @@ public class StatesCensusAnalyser {
             List<CsvStatesCensus> listCSVfile = openCSV.getCSVfileList(reader,CsvStatesCensus.class);
             return listCSVfile.size();
 
-        } catch (NoSuchFileException e) {
+        }
+        catch (NoSuchFileException e) {
             throw new CSVBuilderException("Enter a right file name and type", CSVBuilderException.ExceptionType.FILE_NOT_FOUND);
-        } catch (RuntimeException e) {
+        }
+        catch (RuntimeException e) {
             throw new CSVBuilderException("Check delimiter and header", CSVBuilderException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.getStackTrace();
         }
         return (null);
@@ -32,11 +34,14 @@ public class StatesCensusAnalyser {
         try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath))) {
             List<CSVStatesPojoClass> listCSVfile = openCSV.getCSVfileList(reader,CSVStatesPojoClass.class);
             return listCSVfile.size();
-        } catch (NoSuchFileException e) {
+        }
+        catch (NoSuchFileException e) {
             throw new CSVBuilderException("Enter a right file name and type", CSVBuilderException.ExceptionType.FILE_NOT_FOUND);
-        } catch (RuntimeException e) {
+        }
+        catch (RuntimeException e) {
             throw new CSVBuilderException("Check delimiter and header", CSVBuilderException.ExceptionType.DELIMITER_AND_HEADER_INCORRECT);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.getStackTrace();
         }
         return (null);
