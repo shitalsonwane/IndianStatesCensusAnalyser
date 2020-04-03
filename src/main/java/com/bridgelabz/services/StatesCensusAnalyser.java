@@ -25,15 +25,15 @@ public class StatesCensusAnalyser <E>{
     Map<String, CSVStatesPojoClass> csvStatesPojoClassMap = null;
 
     //Constructor to set pass and class
-    public StatesCensusAnalyser(String path, Class<E> csvClss) {
-        CSV_FILE_PATH = path;
+    public StatesCensusAnalyser() {
+        //CSV_FILE_PATH = path;
         //csvClass = csvClss;
         this.csvStatesCensusMap = new HashMap<>();
         this.csvStatesPojoClassMap = new HashMap<>();
     }
     //METHOD TO LOAD RECORDS OF CSV FILE
-    public int loadRecords() throws CSVBuilderException {
-        try (Reader reader = Files.newBufferedReader(Paths.get(CSV_FILE_PATH))) {
+    public  int loadRecords(String path) throws CSVBuilderException {
+        try (Reader reader = Files.newBufferedReader(Paths.get(path))) {
             OpenCSV csvBuilder = CSVBuilderFactory.createCsvBuilder();
             //csvUserList = csvBuilder.getList(reader, csvClass);
             //return csvUserList.size();
@@ -58,8 +58,8 @@ public class StatesCensusAnalyser <E>{
         return 0;
     }
          //METHOD TO LOAD RECORDS OF STATE CODE
-    public int loadData() throws CSVBuilderException {
-        try (Reader reader = Files.newBufferedReader(Paths.get(CSV_FILE_PATH))) {
+    public int loadData(String path) throws CSVBuilderException {
+        try (Reader reader = Files.newBufferedReader(Paths.get(path))) {
             OpenCSV csvBuilder = CSVBuilderFactory.createCsvBuilder();
             //csvUserList = csvBuilder.getList(reader, csvClass);
             //return csvUserList.size();
