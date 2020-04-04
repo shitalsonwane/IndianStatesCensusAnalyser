@@ -13,14 +13,14 @@ public class CensusDAO {
     public int SrNo;
 
     public CensusDAO(CsvStatesCensus csvStatesCensus) {
-        this.State = csvStatesCensus.state;
+        this.State = csvStatesCensus.State;
         this.Population = csvStatesCensus.Population;
         this.AreaInSqKm = csvStatesCensus.AreaInSqKm;
         this.DensityPerSqkm = csvStatesCensus.DensityPerSqkm;
     }
 
     public CensusDAO(CSVStatesPojoClass csvStatesPojoClass) {
-        this.State = csvStatesPojoClass.StateName;
+        this.State = csvStatesPojoClass.State;
         this.SrNo = csvStatesPojoClass.SrNo;
         this.TIN = csvStatesPojoClass.TIN;
         this.StateCode = csvStatesPojoClass.StateCode;

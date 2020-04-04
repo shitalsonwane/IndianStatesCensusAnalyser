@@ -108,7 +108,7 @@ public class TestMethod {
             stateCensusAnalyzer.loadRecords(CSV_FILE_PATH);
             String SortedData = stateCensusAnalyzer.SortedStateCensusData();
             CsvStatesCensus[] censusCSV = new Gson().fromJson(SortedData, CsvStatesCensus[].class);
-            Assert.assertEquals("Andhra Pradesh", censusCSV[0].state);
+            Assert.assertEquals("Andhra Pradesh", censusCSV[0].State);
         } catch (StatesCensusAnalyserException e) {
         }
     }
@@ -121,11 +121,12 @@ public class TestMethod {
             CSVStatesPojoClass[] StateCodes = new Gson().fromJson(SortedData, CSVStatesPojoClass[].class);
             Assert.assertEquals("AD", StateCodes[0].StateCode);
         } catch (StatesCensusAnalyserException e) {
+            e.printStackTrace();
         }
     }
     @Test   //Population Wise Sorting
     public void givenTheStateCensusData_WhenSortedOnPopulation_ShouldReturnSortedResult() {
-        final String CSV_FILE_PATH = "src/test/resources/StateCensus.csv";
+        final String CSV_FILE_PATH = "src/test/resources/StateCensusData.csv";
         try {
             stateCensusAnalyzer.loadRecords(CSV_FILE_PATH);
             String sortedCensusData = stateCensusAnalyzer.getPopulationWiseSortedCensusData();
@@ -137,7 +138,7 @@ public class TestMethod {
     }
     @Test   //DensityWise Sorting
     public void givenTheStateCensusData_WhenSortedOnDensityPerSqKm_ShouldReturnSortedResult() {
-        final String CSV_FILE_PATH = "/home/revatitekale/Desktop/CSVClone/IndianStatesCensusAnalyser/src/test/resources/StateCensus.csv";
+        final String CSV_FILE_PATH = "src/test/resources/StateCensusData";
         try {
             stateCensusAnalyzer.loadRecords(CSV_FILE_PATH);
             String sortedCensusData = stateCensusAnalyzer.getDensityWiseSortedCensusData();
@@ -149,7 +150,7 @@ public class TestMethod {
     }
     @Test   //Area wise Sorting
     public void givenTheStateCensusData_WhenSortedOnAreaInPerSqKm_ShouldReturnSortedResult() {
-        final String CSV_FILE_PATH = "/home/revatitekale/Desktop/CSVClone/IndianStatesCensusAnalyser/src/main/java/com/bridgelabz/model/CSVStatesCensus.java";
+        final String CSV_FILE_PATH = "src/test/resources/StateCensusData";
         try {
             stateCensusAnalyzer.loadRecords(CSV_FILE_PATH);
             String sortedCensusData = stateCensusAnalyzer.getAreaWiseSortedCensusData();
