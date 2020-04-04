@@ -3,7 +3,7 @@ import com.opencsv.bean.CsvBindByName;
 
 public class CSVStatesPojoClass {
     @CsvBindByName(column = "SrNo")
-    public  String SrNo;
+    public  int SrNo;
 
     @CsvBindByName(column = "StateName")
     public String StateName;
@@ -12,5 +12,5 @@ public class CSVStatesPojoClass {
     public static String StateCode;
 
     @CsvBindByName(column = "TIN")
-    public String TIN;
+    public int TIN;
 }

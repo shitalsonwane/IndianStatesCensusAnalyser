@@ -36,7 +36,7 @@ public class StatesCensusAnalyser <E>{
             while (csvStatesCensusIterator.hasNext()) {
                 CsvStatesCensus csvStatesCensus = csvStatesCensusIterator.next();
                 CensusDAO censusDAO = new CensusDAO(csvStatesCensusIterator.next());
-                this.map.put(censusDAO.state, censusDAO);
+                this.map.put(censusDAO.State, censusDAO);
                 list = map.values().stream().collect(Collectors.toList());
             }
             numberOfRecords = map.size();
@@ -68,7 +68,7 @@ public class StatesCensusAnalyser <E>{
             while (csvStatesPojoClassIterator.hasNext()) {
                 CSVStatesPojoClass csvStatesPojoClass = csvStatesPojoClassIterator.next();
                 CensusDAO censusDTO = map.get(csvStatesPojoClass.StateName);
-                this.map.put(censusDTO.state, censusDTO);
+                this.map.put(censusDTO.StateCode, censusDTO);
                 list = map.values().stream().collect(Collectors.toList());
             }
             numberOfRecords = map.size();
@@ -88,7 +88,7 @@ public class StatesCensusAnalyser <E>{
         if (list == null || list.size() == 0) {
             throw new StatesCensusAnalyserException( "No census data", StatesCensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
         }
-        Comparator<CensusDAO> comparator = Comparator.comparing(csvStatesCensus -> csvStatesCensus.state);
+        Comparator<CensusDAO> comparator = Comparator.comparing(csvStatesCensus -> csvStatesCensus.State);
         this.sortData(comparator);
         String sortedStateCensusJson = new Gson().toJson(list);
         return sortedStateCensusJson;
@@ -98,7 +98,7 @@ public class StatesCensusAnalyser <E>{
         if (list == null || list.size() == 0) {
             throw new StatesCensusAnalyserException( "No census data", StatesCensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
         }
-        Comparator<CensusDAO> comparator = Comparator.comparing(csvStatesPojoClass -> csvStatesPojoClass.stateCode);
+        Comparator<CensusDAO> comparator = Comparator.comparing(csvStatesPojoClass -> csvStatesPojoClass.StateCode);
         this.sortData(comparator);
         String sortedStateCodeJson = new Gson().toJson(list);
         return sortedStateCodeJson;

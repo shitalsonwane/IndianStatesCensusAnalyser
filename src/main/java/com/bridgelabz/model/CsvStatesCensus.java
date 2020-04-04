@@ -7,11 +7,11 @@ public class CsvStatesCensus {
     public static String state;
 
     @CsvBindByName(column = "Population")
-    public int population;
+    public long Population;
 
     @CsvBindByName(column = "AreaInSqKm")
-    public int AreaInSqKm;
+    public long AreaInSqKm;
 
-    @CsvBindByName(column = "DensityPerSqKm")
-    public int DensityPerSqKm;
+    @CsvBindByName(column = "DensityPerSqkm")
+    public int DensityPerSqkm;
 }
