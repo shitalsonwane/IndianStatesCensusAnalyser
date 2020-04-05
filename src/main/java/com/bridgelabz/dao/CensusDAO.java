@@ -1,7 +1,7 @@
-package com.bridgelabz.services;
+package com.bridgelabz.dao;
 
-import com.bridgelabz.model.CSVStatesPojoClass;
-import com.bridgelabz.model.CsvStatesCensus;
+import com.bridgelabz.dto.CSVStatesPojoClass;
+import com.bridgelabz.dto.CsvStatesCensus;
 
 public class CensusDAO {
     public String State;

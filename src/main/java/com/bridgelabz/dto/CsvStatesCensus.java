@@ -1,4 +1,4 @@
-package com.bridgelabz.model;
+package com.bridgelabz.dto;
 import com.opencsv.bean.CsvBindByName;
 
 public class CsvStatesCensus {
@@ -14,7 +14,8 @@ public class CsvStatesCensus {
 
     @CsvBindByName(column = "DensityPerSqkm")
     public int DensityPerSqkm;
-    public CsvStatesCensus(long population, long areaInSqKm, int densityPerSqkm) {
+    public CsvStatesCensus(String state,long population, long areaInSqKm, int densityPerSqkm) {
+        State=state;
         Population = population;
         AreaInSqKm = areaInSqKm;
         DensityPerSqkm = densityPerSqkm;
@@ -23,6 +24,7 @@ public class CsvStatesCensus {
     @Override
     public String toString() {
         return "CsvStatesCensus{" +
+                "State=" + State +
                 "Population=" + Population +
                 ", AreaInSqKm=" + AreaInSqKm +
                 ", DensityPerSqkm=" + DensityPerSqkm +

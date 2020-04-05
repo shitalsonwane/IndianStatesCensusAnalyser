@@ -11,6 +11,6 @@ public class StatesCensusAnalyserException extends Exception {
 
     //ENUM CLASS
     public enum ExceptionType {
-        FILE_NOT_FOUND, INCORRECT_FILE_TYPE, NO_CENSUS_DATA, DELIMITER_AND_HEADER_INCORRECT
+        FILE_NOT_FOUND, INCORRECT_FILE_TYPE, NO_CENSUS_DATA, DELIMITER_AND_HEADER_INCORRECT,UNABLE_TO_PARSE
     }
 }

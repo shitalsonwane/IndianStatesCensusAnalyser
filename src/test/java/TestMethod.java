@@ -1,7 +1,7 @@
 import com.bridgelabz.exception.StatesCensusAnalyserException;
-import com.bridgelabz.model.CSVStatesPojoClass;
-import com.bridgelabz.model.CsvStatesCensus;
-import com.bridgelabz.services.StatesCensusAnalyser;
+import com.bridgelabz.dto.CSVStatesPojoClass;
+import com.bridgelabz.dto.CsvStatesCensus;
+import com.bridgelabz.services.CensusAnalyser;
 import com.google.gson.Gson;
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,7 +9,7 @@ import org.junit.Test;
 import java.io.IOException;
 
 public class TestMethod {
-    StatesCensusAnalyser stateCensusAnalyzer=new StatesCensusAnalyser();
+    CensusAnalyser stateCensusAnalyzer=new CensusAnalyser();
 
     @Test   //check records match
     public void givenNumberOfRecords_WhenMatched_ShouldReturnTrue() throws IOException {

@@ -1,7 +1,7 @@
 /*package com.bridgelabz.services;
 
 import com.bridgelabz.exception.CSVBuilderException;
-import com.bridgelabz.model.CSVStatesPojoClass;
+import com.bridgelabz.dto.CSVStatesPojoClass;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
