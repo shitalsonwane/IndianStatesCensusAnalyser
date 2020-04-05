@@ -22,7 +22,7 @@ public class CsvStatesCensus {
 
     @Override
     public String toString() {
-        return "CSVStatesCensus{" +
+        return "CsvStatesCensus{" +
                 "Population=" + Population +
                 ", AreaInSqKm=" + AreaInSqKm +
                 ", DensityPerSqkm=" + DensityPerSqkm +
