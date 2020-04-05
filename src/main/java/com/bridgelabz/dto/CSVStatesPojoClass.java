@@ -5,7 +5,7 @@ public class CSVStatesPojoClass {
     @CsvBindByName(column = "SrNo")
     public  int SrNo;
 
-    @CsvBindByName(column = "StateName")
+    @CsvBindByName(column = "State")
     public String State;
 
     @CsvBindByName(column = "StateCode")
@@ -13,9 +13,9 @@ public class CSVStatesPojoClass {
 
     @CsvBindByName(column = "TIN")
     public int TIN;
-    public CSVStatesPojoClass(int srNo, String stateName, String stateCode, int TIN) {
+    public CSVStatesPojoClass(int srNo, String state, String stateCode, int TIN) {
         SrNo = srNo;
-        State = stateName;
+        State = state;
         StateCode = stateCode;
         this.TIN = TIN;
     }

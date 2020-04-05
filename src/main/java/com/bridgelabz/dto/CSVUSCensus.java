@@ -3,30 +3,30 @@ package com.bridgelabz.dto;
 import com.opencsv.bean.CsvBindByName;
 
 public class CSVUSCensus {
-    @CsvBindByName(column = "State Id", required = true)
+    @CsvBindByName(column = "State Id")
     public String StateID;
 
-    @CsvBindByName(column = "State", required = true)
+    @CsvBindByName(column = "State")
     public String State;
 
-    @CsvBindByName(column = "Population Density", required = true)
-    public String PopulationDensity;
+    @CsvBindByName(column = "Population Density")
+    public int PopulationDensity;
 
-    @CsvBindByName(column = "Population", required = true)
-    public String Population;
+    @CsvBindByName(column = "Population")
+    public long Population;
 
-    @CsvBindByName(column = "Total area", required = true)
-    public String Area;
+    @CsvBindByName(column = "Total area")
+    public long Area;
 
-    @CsvBindByName(column = "Housing units", required = true)
+    @CsvBindByName(column = "Housing units")
     public String HousingUnits;
 
-    @CsvBindByName(column = "Water area", required = true)
+    @CsvBindByName(column = "Water area")
     public String WaterArea;
 
-    @CsvBindByName(column = "Land Area", required = true)
+    @CsvBindByName(column = "Land Area")
     public String LandArea;
 
-    @CsvBindByName(column = "Housing Density", required = true)
-    public String HousingDensity;
+    @CsvBindByName(column = "Housing Density")
+    public float HousingDensity;
 }
