@@ -15,19 +15,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.stream.StreamSupport;
-
 import static java.nio.file.Files.newBufferedReader;
-
-
 public abstract class CensusAdapter {
     public abstract Map<String, CensusDAO> loadCensusData(String... csvFilePath) throws StatesCensusAnalyserException;
 
     public <E> Map<String, CensusDAO> loadCensusData(Class<E> censusCSVClass, String csvFilePath) throws StatesCensusAnalyserException {
         Map<String, CensusDAO> censusDAOMap = new HashMap<>();
-        //String extension = csvFilePath.substring(csvFilePath.lastIndexOf(".") + 1);
-        //if (!extension.equals("csv")) {
-          //  throw new StatesCensusAnalyserException("Incorrect file type", StatesCensusAnalyserException.ExceptionType.FILE_NOT_FOUND);
-        //}
         try (Reader reader = newBufferedReader(Paths.get(csvFilePath));) {
             OpenCSV csvBuilder = CSVBuilderFactory.createCSVBuilder();
             Iterator<E> stateCensusIterator = csvBuilder.getIterator(reader, censusCSVClass);

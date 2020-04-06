@@ -4,7 +4,6 @@ import com.bridgelabz.adapter.CensusAdapterFactory;
 import com.bridgelabz.dao.CensusDAO;
 import com.bridgelabz.exception.StatesCensusAnalyserException;
 import com.google.gson.Gson;
-
 import java.util.*;
 import java.util.stream.Collectors;
 

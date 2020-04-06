@@ -6,7 +6,6 @@ import com.bridgelabz.dto.CsvStatesCensus;
 import com.bridgelabz.exception.StatesCensusAnalyserException;
 import com.bridgelabz.services.CSVBuilderFactory;
 import com.bridgelabz.services.OpenCSV;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;

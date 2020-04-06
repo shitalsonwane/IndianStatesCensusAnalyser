@@ -4,15 +4,13 @@ import com.opencsv.bean.CsvBindByName;
 public class CSVStatesPojoClass {
     @CsvBindByName(column = "SrNo")
     public  int SrNo;
-
     @CsvBindByName(column = "State")
     public String State;
-
     @CsvBindByName(column = "StateCode")
     public static String StateCode;
-
     @CsvBindByName(column = "TIN")
     public int TIN;
+
     public CSVStatesPojoClass(int srNo, String state, String stateCode, int TIN) {
         SrNo = srNo;
         State = state;
