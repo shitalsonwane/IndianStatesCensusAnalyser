@@ -70,5 +70,4 @@ public class CensusDAO {
             return new CSVUSCensus(StateCode, State, Population, AreaInSqKm, DensityPerSqkm);
         return null;
     }
-
 }
