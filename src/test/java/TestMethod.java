@@ -1,6 +1,7 @@
-import com.bridgelabz.exception.StatesCensusAnalyserException;
 import com.bridgelabz.dto.CSVStatesPojoClass;
+import com.bridgelabz.dto.CSVUSCensus;
 import com.bridgelabz.dto.CsvStatesCensus;
+import com.bridgelabz.exception.StatesCensusAnalyserException;
 import com.bridgelabz.services.CensusAnalyser;
 import com.google.gson.Gson;
 import org.junit.Assert;
@@ -129,7 +130,7 @@ public class TestMethod {
         }
     }
 
-    @Test   //Population Wise Sorting
+    @Test   //Population Wise Sorting of India
     public void givenTheStateCensusData_WhenSortedOnPopulation_ShouldReturnSortedResult() {
         final String CSV_FILE_PATH = "src/test/resources/StateCensusData.csv";
         try {
@@ -174,4 +175,18 @@ public class TestMethod {
         } catch (StatesCensusAnalyserException e) {
         }
     }
+    @Test   //Population Wise Sorting of US
+    public void givenTheUSCensusData_WhenSortedOnPopulation_ShouldReturnSortedResult() {
+        final String CSV_FILE_PATH = "src/test/resources/USCensusData.csv";
+        try {
+            stateCensusAnalyzer.loadStateCensusCSVData(CensusAnalyser.Country.US, CSV_FILE_PATH);
+            String sortedCensusData = stateCensusAnalyzer.getPopulationWiseSortedCensusData();
+            CSVUSCensus[] csvUsCensus = new Gson().fromJson(sortedCensusData,CSVUSCensus[].class);
+            Assert.assertEquals("California",csvUsCensus[0].State);
+        } catch (StatesCensusAnalyserException e) {
+            e.getStackTrace();
+        }
+    }
+
 }
+

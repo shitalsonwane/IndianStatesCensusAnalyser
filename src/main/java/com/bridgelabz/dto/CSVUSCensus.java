@@ -29,4 +29,20 @@ public class CSVUSCensus {
 
     @CsvBindByName(column = "Housing Density")
     public float HousingDensity;
+
+    public CSVUSCensus(String state,long population, long area, int populationDensity){
+        State=state;
+        Population = population;
+        Area = area;
+        PopulationDensity = populationDensity;
+    }
+    @Override
+    public String toString() {
+        return "CSVUSCensus{" +
+                "State=" + State +
+                "Population=" + Population +
+                ", Area=" + Area +
+                ", PopulationDensity=" + PopulationDensity +
+                '}';
+    }
 }
