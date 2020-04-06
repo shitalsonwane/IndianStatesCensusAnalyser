@@ -5,6 +5,8 @@ import com.bridgelabz.dto.CSVUSCensus;
 import com.bridgelabz.dto.CsvStatesCensus;
 import com.bridgelabz.services.CensusAnalyser;
 
+import java.util.Comparator;
+
 public class CensusDAO {
         public float HousingDensity;
         public String StateID;
@@ -38,7 +40,17 @@ public class CensusDAO {
             this.DensityPerSqkm = csvusCensus.PopulationDensity;
             this.HousingDensity = csvusCensus.HousingDensity;
         }
-
+    public static Comparator<CensusDAO> getSortComparator(CensusAnalyser.SortingMode mode) {
+        if (mode.equals(CensusAnalyser.SortingMode.STATE))
+            return Comparator.comparing(census -> census.State);
+        if (mode.equals(CensusAnalyser.SortingMode.POPULATION))
+            return Comparator.comparing(CensusDAO::getPopulation).reversed();
+        if (mode.equals(CensusAnalyser.SortingMode.AREA))
+            return Comparator.comparing(CensusDAO::getAreaInSqKm).reversed();
+        if (mode.equals(CensusAnalyser.SortingMode.DENSITY))
+            return Comparator.comparing(CensusDAO::getDensityPerSqkm).reversed();
+        return null;
+    }
     public long getPopulation() {
         return Population;
     }
