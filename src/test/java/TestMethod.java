@@ -189,6 +189,7 @@ public class TestMethod {
             e.getStackTrace();
         }
     }
+<<<<<<< HEAD
     @Test
     public void givenTheUSCensusData_WhenSortedOnPopulationDensity_ShouldReturnSortedResult() {
         final String CSV_FILE_PATH = "src/test/resources/USCensusData.csv";
@@ -216,5 +217,7 @@ public class TestMethod {
     }
 
 
+=======
+>>>>>>> c274008086d0bd4cffc677f242ee2c7918035549
 }
 
