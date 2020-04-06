@@ -40,17 +40,7 @@ public class CensusDAO {
             this.DensityPerSqkm = csvusCensus.PopulationDensity;
             this.HousingDensity = csvusCensus.HousingDensity;
         }
-    public static Comparator<CensusDAO> getSortComparator(CensusAnalyser.SortingMode mode) {
-        if (mode.equals(CensusAnalyser.SortingMode.STATE))
-            return Comparator.comparing(census -> census.State);
-        if (mode.equals(CensusAnalyser.SortingMode.POPULATION))
-            return Comparator.comparing(CensusDAO::getPopulation).reversed();
-        if (mode.equals(CensusAnalyser.SortingMode.AREA))
-            return Comparator.comparing(CensusDAO::getAreaInSqKm).reversed();
-        if (mode.equals(CensusAnalyser.SortingMode.DENSITY))
-            return Comparator.comparing(CensusDAO::getDensityPerSqkm).reversed();
-        return null;
-    }
+
     public long getPopulation() {
         return Population;
     }
@@ -74,7 +64,17 @@ public class CensusDAO {
     public void setDensityPerSqkm(long densityPerSqkm) {
         DensityPerSqkm = densityPerSqkm;
     }
-
+    public static Comparator<CensusDAO> getSortComparator(CensusAnalyser.SortingMode mode) {
+        if (mode.equals(CensusAnalyser.SortingMode.STATE))
+            return Comparator.comparing(census -> census.State);
+        if (mode.equals(CensusAnalyser.SortingMode.POPULATION))
+            return Comparator.comparing(CensusDAO::getPopulation).reversed();
+        if (mode.equals(CensusAnalyser.SortingMode.AREA))
+            return Comparator.comparing(CensusDAO::getAreaInSqKm).reversed();
+        if (mode.equals(CensusAnalyser.SortingMode.DENSITY))
+            return Comparator.comparing(CensusDAO::getDensityPerSqkm).reversed();
+        return null;
+    }
     public Object getCensusDTO(CensusAnalyser.Country country) {
         if (country.equals(CensusAnalyser.Country.INDIA))
             return new CsvStatesCensus(State, Population, AreaInSqKm, DensityPerSqkm);
