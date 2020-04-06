@@ -12,7 +12,8 @@ public class CensusAnalyser <E>{
     private Country country;
     List<CensusDAO> censusList = null;
     Map<String, CensusDAO> censusDAOMap = null;
-    //Constructor to set pass and class
+
+    //  CONSTRUCTOR TO PASS COUNTRY
     public CensusAnalyser(Country country) {
         this.country = country;
     }
@@ -44,30 +45,8 @@ public class CensusAnalyser <E>{
         Collections.reverse(censusList);
         String sortedStateCensusJson = new Gson().toJson(censusList);
         return sortedStateCensusJson;
-    }/*
-    //METHOD TO SORT STATE CENSUS DATA BY DENSITY WISE
-    public String getDensityWiseSortedCensusData() throws StatesCensusAnalyserException {
-        if (censusList == null || censusList.size() == 0) {
-            throw new StatesCensusAnalyserException( "No census data", StatesCensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
-        }
-        Comparator<CensusDAO> censusComparator = Comparator.comparing(censusDAO -> censusDAO.DensityPerSqkm);
-        this.sortData(censusComparator);
-        Collections.reverse(censusList);
-        String sortedStateCensusJson = new Gson().toJson(censusList);
-        return sortedStateCensusJson;
     }
-    //METHOD TO SORT STATE CENSUS DATA BY AREA
-    public String getAreaWiseSortedCensusData() throws StatesCensusAnalyserException {
-        if (censusList == null || censusList.size() == 0) {
-            throw new StatesCensusAnalyserException("No census data", StatesCensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
-        }
-        Comparator<CensusDAO> censusComparator = Comparator.comparing(censusDAO -> censusDAO.AreaInSqKm);
-        this.sortData(censusComparator);
-        Collections.reverse(censusList);
-        String sortedStateCensusJson = new Gson().toJson(censusList);
-        return sortedStateCensusJson;
-    }*/
-    // sorting function which used by above function for sorting data
+    // MAIN SORTING
     private void sortData(Comparator<CensusDAO> csvComparator) {
         for (int i = 0; i < censusList.size() - 1; i++) {
             for (int j = 0; j < censusList.size() - i - 1; j++) {
